@@ -248,12 +248,56 @@ void removeStudent(int count,struct Student std[50])
         }
     }
 }
-void sortName(int count) 
+void sortName(int count, struct Student std[50])
 {
-    int j;
+    int j,i,a;
+
     for (j = 0; j < count; j++) 
     {
-    
+        string FirstName = std[j].firstName;
+        string LastName = std[j].lastName;
+        string iD = std[j].ID;
+        double testScores[6];
+        double quizScore = std[j].QuizScore;
+        char grade = std[j].grade;
+        double average = std[j].Average;
+        double averagequiz = std[j].Averagequiz;
+        double averagetest = std[j].Averagetest;
+
+        for (a = 0; a < 6; a++) {
+            testScores[a] = std[j].TestScores[a];
+        }
+
+        for (i = 0; i < count;i++) {
+            if (std[j].lastName > std[i].lastName)
+            {
+                std[j].firstName = std[i].firstName;
+                std[j].lastName = std[i].lastName;
+                std[j].ID = std[i].ID;
+                for (a = 0; a < 6;a++) {
+                    std[j].TestScores[a] = std[i].TestScores[a];
+                }
+                std[j].QuizScore = std[i].QuizScore;
+                std[j].grade = std[i].grade;
+                std[j].Average = std[i].Average;
+                std[j].Averagequiz = std[i].Averagequiz;
+                std[j].Averagetest = std[i].Averagetest;
+                //switch
+                std[j].firstName = FirstName;
+                std[j].lastName = LastName;
+                std[j].ID = iD;
+                for (a = 0; a < 6; a++) {
+                    std[j].TestScores[a] = testScores[a];
+                }
+                std[j].QuizScore = quizScore;
+                std[j].grade = grade;
+                std[j].Average = average;
+                std[j].Averagequiz = averagequiz;
+                std[j].Averagetest = averagetest;
+                --j;
+                i = count;
+            }
+        }
     }
 }
 void printToMonitor()
